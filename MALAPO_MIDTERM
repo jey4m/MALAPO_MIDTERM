@@ -1,0 +1,91 @@
+//Class representing a person with a name and age
+class Person {
+    String name; // Person's name
+    int age;// Person's age 
+
+//Contructor to initialize a person
+    Person(String name, int age) {
+        this.name = name; // Set the name
+        this.age = age; // Set the age
+    }
+
+//Method to display person's info
+    void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+//Class representing a student, inheriting from Peson
+class Student extends Person {
+    String studentID; // Student's ID
+    String course; // Course name
+    int units; // Number if units
+    final int feePerUnit = 1000; // Fee per unit
+
+//Construct to initialize a student
+    Student(String name, int age, String studentID, String course, int units) {
+        super(name, age); // Call Person constructor
+        this.studentID = studentID; // Set student ID
+        this.course = course; // Set course
+        this.units = units; // Set units
+    }
+
+//Method to calculate total fees 
+    double calculateFees() {
+        return units * feePerUnit; // Total fee calculation
+    }
+
+//Override method to display atudent info
+    @Override
+    void displayInfo() {
+        System.out.println("Student Name: " + name + ", Age: " + age + 
+                           ", Student ID: " + studentID + ", Course: " + course + 
+                           ", Units: " + units + ", Total Fee: " + calculateFees());
+    }
+}
+
+//Class representing a student, inheriting from Peson
+class Instructor extends Person {
+    String employeeID; // Instructor's ID
+    String department; // Department name
+    double salary; // Salary amount 
+
+//Construct to initialize an instructor 
+    Instructor(String name, int age, String employeeID, String department, double salary) {
+        super(name, age); // Call Person constructor
+        this.employeeID = employeeID; // Set employee ID
+        this.department = department; // Set department
+        this.salary = salary; // Set salary
+    }
+
+//Override method to display instructor info
+    @Override
+    void displayInfo() {
+        System.out.println("Instructor Name: " + name + ", Age: " + age + 
+                           ", Employee ID: " + employeeID + ", Department: " + department + 
+                           ", Salary: " + salary);
+    }
+}
+
+//Main class for the enrollment system
+public class EnrollmentSystem {
+    //Method to print details of a person
+    static void printDetails(Person p) {
+        p.displayInfo(); //Call displayctInfo method of the Person object
+    }
+// Main method to run the enrollment system
+    public static void main(String[] args) {
+        // Create student objects
+        Student student1 = new Student("Jeam Rose", 19, "231000331", "Aerospace Engineering", 5);
+        Student student2 = new Student("James William", 19, "14092004205", "Information Technology", 4);
+        // Create instructor objects
+        Instructor instructor1 = new Instructor("Dr. DL Perez", 31, "E001", "Physics", 85000);
+        Instructor instructor2 = new Instructor("Prof. JB Perez", 30, "E002", "Chemistry", 50000);
+
+// Print details of the created students and instructors
+        printDetails(student1);
+        printDetails(student2);
+        printDetails(instructor1);
+        printDetails(instructor2);
+    }
+}
